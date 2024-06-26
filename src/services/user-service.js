@@ -83,6 +83,24 @@ class UserService {
             throw error;
         }
     }
+
+    async isAuthenticated(token) {
+        try {
+            const isVerified = this.verifyToken(token);
+            if(!isVerified){
+                throw new Error("Unauthorized Invalid token");
+            }
+            const user = await this.userRepository.getUser(isVerified.id);
+            console.log("User found",user)
+            if(!user){
+                throw new Error("Unauthorized User not found in our database");
+            }
+            return user.id;
+        } catch (error) {
+            console.log("Something went wrong while verifying token in service layer",error);
+            throw error;
+        }
+    }
 }
 
 module.exports = UserService;
