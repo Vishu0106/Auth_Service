@@ -1,6 +1,4 @@
 node_modules/
-*env
-env*
 .env
 src/config/config.json
 src/config/server-config.js
