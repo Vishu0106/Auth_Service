@@ -9,6 +9,8 @@ router.post('/signup',
     AuthRequestValidator.validateUserAuth,
      userRoutes.create
     );
-
+router.post('/signin',
+    AuthRequestValidator.validateUserAuth,
+    userRoutes.signIn);
 module.exports = router;
 
