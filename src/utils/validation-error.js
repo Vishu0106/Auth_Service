@@ -4,7 +4,6 @@ class ValidationError extends AppError {
     constructor(error) {
         let errorName = error.name;
         let explanation = [];
-        console.log(typeof error.errors);
         error.errors.forEach((err)=>{
             explanation.push(err.message);
         })
