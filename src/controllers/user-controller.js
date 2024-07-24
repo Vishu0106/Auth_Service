@@ -6,7 +6,7 @@ const create = async(req,res) => {
             email: req.body.email,
             password: req.body.password
         });
-        return res.status(200).json({
+        return res.status(201).json({
             data: response,
             message: "User created successfully",
             success: true,
@@ -14,10 +14,10 @@ const create = async(req,res) => {
         });
     } catch (error) {
         console.log(error);
-        return res.status(500).json({
+        return res.status(error.statusCode).json({
             data:{},
-            message: "Something went wrong while creating user",
-            error: error,
+            message: error.message,
+            error: error.explanation,
             success: false
         })
     }
